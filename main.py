@@ -64,7 +64,11 @@ class MyWidget(QMainWindow):
                 t.append(i[0])
             print(t)
             cur.execute(f"""INSERT INTO fromBortoPict(id_bord, id_pict) VALUES('{t[0]}','{es[0]}')""")
-            shutil.copy(fname, ".")
+            try:
+                shutil.copy(fname, ".")
+                raise shutil.SameFileError
+            except:
+                print("Ай-я-яй")
             con.commit()
             con.close()
             self.onChanged()
