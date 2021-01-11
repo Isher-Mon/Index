@@ -64,8 +64,9 @@ class MyWidget(QMainWindow):
                 t.append(i[0])
             print(t)
             cur.execute(f"""INSERT INTO fromBortoPict(id_bord, id_pict) VALUES('{t[0]}','{es[0]}')""")
-            shutil.copy(fname, "C:\\Users\inok3\PycharmProjects\IndexProject-master")
+            shutil.copy(fname, ".")
             con.commit()
+            con.close()
             self.onChanged()
 
     def showBords(self):

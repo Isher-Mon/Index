@@ -28,10 +28,11 @@ class Regis(QWidget):
             esult.append(i[0])
         for i in cur.execute("SELECT log FROM acc"):
             login.append(i[0])
-        pas , rpas = self.Pas.text(), self.RePas.text()
+        pas = self.Pas.text()
+        rpas = self.RePas.text()
         if ("@" in mail and mail.split("@")[1] == "yandex.ru") and mail not in esult:
             if(lo not in login):
-                if pas != rpas:
+                if pas == rpas:
                     try:
                         if check_pas:
                             cur.execute(f"""INSERT INTO acc(mail , pas , log) VALUES('{mail}','{pas}','{lo}')""")
