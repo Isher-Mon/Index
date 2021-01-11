@@ -51,7 +51,7 @@ class MyWidget(QMainWindow):
         if fname != "":
             con = sqlite3.connect("pict.sqlite")
             cur = con.cursor()
-            p_name = "C:\\Users\inok3\PycharmProjects\IndexProject-master\Pict" + "\\" + fname.split(b)[-1]
+            p_name = "IndexProject-master\Pict" + "\\" + fname.split(b)[-1]
             cur.execute(f"""INSERT INTO pict(p_adress, name) VALUES('{p_name}','Избраное')""")
             con.commit()
             es = []
@@ -65,7 +65,7 @@ class MyWidget(QMainWindow):
                 t.append(i[0])
             print(t)
             cur.execute(f"""INSERT INTO fromBortoPict(id_bord, id_pict) VALUES('{t[0]}','{es[0]}')""")
-            shutil.copy(fname, "C:\\Users\inok3\PycharmProjects\IndexProject-master\Pict")
+            shutil.copy(fname, "IndexProject-master\Pict")
             con.commit()
             self.onChanged()
 
